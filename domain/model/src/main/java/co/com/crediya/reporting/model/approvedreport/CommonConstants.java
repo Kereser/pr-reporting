@@ -22,6 +22,25 @@ public class CommonConstants {
   }
 
   @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  public static class Fields {
+    public static final String EMAIL = "email";
+  }
+
+  @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  public static class ErrorResponse {
+    // Examples
+    public static final String ATTRIBUTE_DESCRIPTION = "Attribute or field";
+    public static final String STATUS_DESCRIPTION = "Http status code";
+    public static final String ERROR_DESCRIPTION = "Generic error for class";
+    public static final String DETAILS_DESCRIPTION = "Detailed error";
+
+    // Generic messages
+    public static final String ERROR_EXAMPLE = "Field validation exception";
+    public static final String DETAILS_EXAMPLE =
+        "exampleValue is not a valid value for exampleAttribute";
+  }
+
+  @NoArgsConstructor(access = AccessLevel.PRIVATE)
   public static class Docs {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -30,5 +49,10 @@ public class CommonConstants {
       public static final String GET_DESCRIPTION = "Metrics about approved reports";
       public static final String GET_OPERATION_ID = "getApprovedReports";
     }
+  }
+
+  @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  public static class Chars {
+    public static final String EMPTY = "";
   }
 }
