@@ -3,7 +3,6 @@ package co.com.crediya.reporting.dynamodb;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import lombok.NoArgsConstructor;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
