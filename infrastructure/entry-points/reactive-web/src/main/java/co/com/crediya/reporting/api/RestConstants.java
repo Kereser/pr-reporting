@@ -16,6 +16,6 @@ public class RestConstants {
 
   @NoArgsConstructor(access = AccessLevel.PRIVATE)
   public static class ReportAPI {
-    public static final String APPROVED_URL = "/api/v1/approve";
+    public static final String APPROVED_URL = "/reporting/api/v1/approve";
   }
 }
