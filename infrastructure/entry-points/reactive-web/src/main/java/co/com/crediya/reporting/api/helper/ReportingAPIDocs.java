@@ -10,7 +10,9 @@ import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.http.MediaType;
 import org.springframework.web.ErrorResponse;
 
+import co.com.crediya.reporting.api.RestConstants;
 import co.com.crediya.reporting.api.dto.ApprovedReportDTOResponse;
+import co.com.crediya.reporting.api.exceptions.ErrorResponseDTO;
 import co.com.crediya.reporting.model.approvedreport.CommonConstants;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -26,7 +28,7 @@ public class ReportingAPIDocs {
             .operationId(CommonConstants.Docs.ApproveReport.GET_OPERATION_ID)
             .response(
                 responseBuilder()
-                    .responseCode("200")
+                    .responseCode(RestConstants.StatusCodeInt.OK)
                     .content(
                         contentBuilder()
                             .mediaType(MediaType.APPLICATION_JSON_VALUE)
@@ -34,7 +36,14 @@ public class ReportingAPIDocs {
                                 schemaBuilder().implementation(ApprovedReportDTOResponse.class))))
             .response(
                 responseBuilder()
-                    .responseCode("400")
+                    .responseCode(RestConstants.StatusCodeInt.BAD_REQUEST)
+                    .content(
+                        contentBuilder()
+                            .mediaType(MediaType.APPLICATION_JSON_VALUE)
+                            .schema(schemaBuilder().implementation(ErrorResponseDTO.class))))
+            .response(
+                responseBuilder()
+                    .responseCode(RestConstants.StatusCodeInt.SERVER_ERROR)
                     .content(
                         contentBuilder()
                             .mediaType(MediaType.APPLICATION_JSON_VALUE)
