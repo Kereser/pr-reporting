@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;
 import software.amazon.awssdk.metrics.MetricPublisher;
@@ -35,7 +36,7 @@ public class DynamoDBConfig {
   public DynamoDbAsyncClient amazonDynamoDBAsync(
       MetricPublisher publisher, @Value("${aws.region}") String region) {
     return DynamoDbAsyncClient.builder()
-        .credentialsProvider(ProfileCredentialsProvider.create())
+        .credentialsProvider(DefaultCredentialsProvider.builder().build())
         .region(Region.of(region))
         .overrideConfiguration(o -> o.addMetricPublisher(publisher))
         .build();
