@@ -22,8 +22,18 @@ public class CommonConstants {
   }
 
   @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  public static class Security {
+    public static final String BEARER = "Bearer ";
+    public static final String ADMIN_ROLE = "ROLE_ADMIN";
+    public static final int TOKEN_SUB_STR_LEN = 7;
+  }
+
+  @NoArgsConstructor(access = AccessLevel.PRIVATE)
   public static class Fields {
     public static final String EMAIL = "email";
+    public static final String USER_ID = "userId";
+    public static final String PASSWORD = "password";
+    public static final String AUTHORITIES = "authorities";
   }
 
   @NoArgsConstructor(access = AccessLevel.PRIVATE)
