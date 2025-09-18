@@ -32,22 +32,22 @@ class SQSConfigTest {
   }
 
   @Test
-  void configSQSListenerIsNotNull() {
+  void configListenerSQSListenerIsNotNull() {
     assertThat(sqsConfig.sqsListener(sqsAsyncClient, sqsProperties, message -> Mono.empty()))
         .isNotNull();
   }
 
   @Test
-  void configSqsIsNotNull() {
+  void configListenerSqsIsNotNull() {
     var loggingMetricPublisher = LoggingMetricPublisher.create();
-    assertThat(sqsConfig.configSqs(sqsProperties, loggingMetricPublisher)).isNotNull();
+    assertThat(sqsConfig.configListenerSqs(sqsProperties, loggingMetricPublisher)).isNotNull();
   }
 
   @Test
-  void configSqsWhenEndpointIsNotNull() {
+  void configListenerSqsWhenEndpointIsNotNull() {
     var loggingMetricPublisher = LoggingMetricPublisher.create();
     when(sqsProperties.endpoint()).thenReturn("http://localhost:4566");
-    assertThat(sqsConfig.configSqs(sqsProperties, loggingMetricPublisher)).isNotNull();
+    assertThat(sqsConfig.configListenerSqs(sqsProperties, loggingMetricPublisher)).isNotNull();
   }
 
   @Test
