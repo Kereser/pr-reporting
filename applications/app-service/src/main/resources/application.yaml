@@ -25,7 +25,7 @@ management:
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
 jwt:
-  secret: ${JWT_SECRET}
+  secret: "${JWT_SECRET}"
   expiration: 86400000
 entrypoint:
   sqs:
@@ -35,3 +35,9 @@ entrypoint:
     maxNumberOfMessages: 1
     visibilityTimeoutSeconds: 10
     numberOfThreads: 1
+adapter:
+  sqs:
+    region: "${AWS_REGION:us-east-2}"
+    approvedRelatedDailyReportQueue: "${SENDER_APPROVE_RELATED_DAILY_REPORT:https://sqs.us-east-2.amazonaws.com/343629588964/reporting-approve-related-daily-queue}"
+cron:
+  approvedRelatedReportScheduled: "30 1 * * *"
