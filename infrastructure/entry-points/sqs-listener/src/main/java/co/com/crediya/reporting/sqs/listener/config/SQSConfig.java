@@ -3,6 +3,7 @@ package co.com.crediya.reporting.sqs.listener.config;
 import java.net.URI;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,7 +26,9 @@ public class SQSConfig {
 
   @Bean
   public SQSListener sqsListener(
-      SqsAsyncClient client, SQSProperties properties, Function<Message, Mono<Void>> fn) {
+      @Qualifier(value = "configListenerSqs") SqsAsyncClient client,
+      SQSProperties properties,
+      Function<Message, Mono<Void>> fn) {
     return SQSListener.builder()
         .client(client)
         .properties(properties)
@@ -35,7 +38,7 @@ public class SQSConfig {
   }
 
   @Bean
-  public SqsAsyncClient configSqs(SQSProperties properties, MetricPublisher publisher) {
+  public SqsAsyncClient configListenerSqs(SQSProperties properties, MetricPublisher publisher) {
     return SqsAsyncClient.builder()
         .endpointOverride(resolveEndpoint(properties))
         .region(Region.of(properties.region()))
